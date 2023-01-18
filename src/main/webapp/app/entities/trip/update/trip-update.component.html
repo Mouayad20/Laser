@@ -1,0 +1,144 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-trip-heading" data-cy="TripCreateUpdateHeading" jhiTranslate="laserApp.trip.home.createOrEditLabel">
+        Create or edit a Trip
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.createdAt" for="field_createdAt">Created At</label>
+          <div class="d-flex">
+            <input
+              id="field_createdAt"
+              data-cy="createdAt"
+              type="datetime-local"
+              class="form-control"
+              name="createdAt"
+              formControlName="createdAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.flyTime" for="field_flyTime">Fly Time</label>
+          <div class="d-flex">
+            <input
+              id="field_flyTime"
+              data-cy="flyTime"
+              type="datetime-local"
+              class="form-control"
+              name="flyTime"
+              formControlName="flyTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.arriveTime" for="field_arriveTime">Arrive Time</label>
+          <div class="d-flex">
+            <input
+              id="field_arriveTime"
+              data-cy="arriveTime"
+              type="datetime-local"
+              class="form-control"
+              name="arriveTime"
+              formControlName="arriveTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.tripIdentifier" for="field_tripIdentifier">Trip Identifier</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tripIdentifier"
+            id="field_tripIdentifier"
+            data-cy="tripIdentifier"
+            formControlName="tripIdentifier"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.details" for="field_details">Details</label>
+          <input type="text" class="form-control" name="details" id="field_details" data-cy="details" formControlName="details" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.ticketImage" for="field_ticketImage">Ticket Image</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ticketImage"
+            id="field_ticketImage"
+            data-cy="ticketImage"
+            formControlName="ticketImage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.tripType" for="field_tripType">Trip Type</label>
+          <input type="text" class="form-control" name="tripType" id="field_tripType" data-cy="tripType" formControlName="tripType" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.transit" for="field_transit">Transit</label>
+          <input type="text" class="form-control" name="transit" id="field_transit" data-cy="transit" formControlName="transit" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.to" for="field_to">To</label>
+          <select class="form-control" id="field_to" data-cy="to" name="to" formControlName="to">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="locationOption.id === editForm.get('to')!.value?.id ? editForm.get('to')!.value : locationOption"
+              *ngFor="let locationOption of locationsSharedCollection; trackBy: trackLocationById"
+            >
+              {{ locationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.trip.from" for="field_from">From</label>
+          <select class="form-control" id="field_from" data-cy="from" name="from" formControlName="from">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="locationOption.id === editForm.get('from')!.value?.id ? editForm.get('from')!.value : locationOption"
+              *ngFor="let locationOption of locationsSharedCollection; trackBy: trackLocationById"
+            >
+              {{ locationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

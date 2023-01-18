@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="TripHeading">
+    <span jhiTranslate="laserApp.trip.home.title">Trips</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="laserApp.trip.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-trip"
+        [routerLink]="['/trip/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="laserApp.trip.home.createLabel"> Create a new Trip </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trips?.length === 0">
+    <span jhiTranslate="laserApp.trip.home.notFound">No trips found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="trips && trips.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="createdAt">
+            <span jhiTranslate="laserApp.trip.createdAt">Created At</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="flyTime">
+            <span jhiTranslate="laserApp.trip.flyTime">Fly Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="arriveTime">
+            <span jhiTranslate="laserApp.trip.arriveTime">Arrive Time</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tripIdentifier">
+            <span jhiTranslate="laserApp.trip.tripIdentifier">Trip Identifier</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="details"><span jhiTranslate="laserApp.trip.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="ticketImage">
+            <span jhiTranslate="laserApp.trip.ticketImage">Ticket Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tripType">
+            <span jhiTranslate="laserApp.trip.tripType">Trip Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transit"><span jhiTranslate="laserApp.trip.transit">Transit</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="to.id"><span jhiTranslate="laserApp.trip.to">To</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="from.id"><span jhiTranslate="laserApp.trip.from">From</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trip of trips; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/trip', trip.id, 'view']">{{ trip.id }}</a>
+          </td>
+          <td>{{ trip.createdAt | formatMediumDatetime }}</td>
+          <td>{{ trip.flyTime | formatMediumDatetime }}</td>
+          <td>{{ trip.arriveTime | formatMediumDatetime }}</td>
+          <td>{{ trip.tripIdentifier }}</td>
+          <td>{{ trip.details }}</td>
+          <td>{{ trip.ticketImage }}</td>
+          <td>{{ trip.tripType }}</td>
+          <td>{{ trip.transit }}</td>
+          <td>
+            <div *ngIf="trip.to">
+              <a [routerLink]="['/location', trip.to?.id, 'view']">{{ trip.to?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trip.from">
+              <a [routerLink]="['/location', trip.from?.id, 'view']">{{ trip.from?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/trip', trip.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/trip', trip.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(trip)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trips && trips.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

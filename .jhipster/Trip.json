@@ -1,0 +1,67 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213533",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "trip",
+  "fields": [
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "flyTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "arriveTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "tripIdentifier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ticketImage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tripType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transit",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Trip",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "trip",
+      "relationshipName": "deals",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "tripDestinations",
+      "relationshipName": "to",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "tripSources",
+      "relationshipName": "from",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

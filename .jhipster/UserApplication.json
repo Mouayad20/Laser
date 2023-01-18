@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213527",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "user_application",
+  "fields": [
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "passport",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "isGoogleAccount",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isFacebookAccount",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isTwitterAccount",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fiveStar",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fourSatr",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "threeStar",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "twoStar",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "oneStar",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "detalis",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserApplication",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "connection",
+      "otherEntityRelationshipName": "userApplication",
+      "ownerSide": true,
+      "relationshipName": "connection",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "deliver",
+      "relationshipName": "tripsDeals",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "owner",
+      "relationshipName": "shipmentDeals",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "id": false,
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userApplication",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

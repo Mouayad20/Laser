@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="transaction">
+      <h2 data-cy="transactionDetailsHeading"><span jhiTranslate="laserApp.transaction.detail.title">Transaction</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ transaction.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.fromAccount">From Account</span></dt>
+        <dd>
+          <span>{{ transaction.fromAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.toAccount">To Account</span></dt>
+        <dd>
+          <span>{{ transaction.toAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.fees">Fees</span></dt>
+        <dd>
+          <span>{{ transaction.fees }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.netAmount">Net Amount</span></dt>
+        <dd>
+          <span>{{ transaction.netAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.details">Details</span></dt>
+        <dd>
+          <span>{{ transaction.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.transaction.provider">Provider</span></dt>
+        <dd>
+          <div *ngIf="transaction.provider">
+            <a [routerLink]="['/account-provider', transaction.provider?.id, 'view']">{{ transaction.provider?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/transaction', transaction.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

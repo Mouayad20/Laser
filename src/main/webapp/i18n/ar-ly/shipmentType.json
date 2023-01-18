@@ -1,0 +1,26 @@
+{
+  "laserApp": {
+    "shipmentType": {
+      "home": {
+        "title": "Shipment Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Shipment Type",
+        "createOrEditLabel": "Create or edit a Shipment Type",
+        "notFound": "No Shipment Types found"
+      },
+      "created": "A new Shipment Type is created with identifier {{ param }}",
+      "updated": "A Shipment Type is updated with identifier {{ param }}",
+      "deleted": "A Shipment Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shipment Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Shipment Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "factor": "Factor",
+      "shipments": "Shipments"
+    }
+  }
+}

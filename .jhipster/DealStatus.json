@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213536",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "deal_status",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sequence",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DealStatus",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "status",
+      "relationshipName": "deals",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

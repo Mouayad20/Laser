@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="deal">
+      <h2 data-cy="dealDetailsHeading"><span jhiTranslate="laserApp.deal.detail.title">Deal</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ deal.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ deal.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.isCashed">Is Cashed</span></dt>
+        <dd>
+          <span>{{ deal.isCashed }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.fromAccount">From Account</span></dt>
+        <dd>
+          <span>{{ deal.fromAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.toAccount">To Account</span></dt>
+        <dd>
+          <span>{{ deal.toAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.fullWeight">Full Weight</span></dt>
+        <dd>
+          <span>{{ deal.fullWeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.availableWeight">Available Weight</span></dt>
+        <dd>
+          <span>{{ deal.availableWeight }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.arrivelDate">Arrivel Date</span></dt>
+        <dd>
+          <span>{{ deal.arrivelDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.expectedDate">Expected Date</span></dt>
+        <dd>
+          <span>{{ deal.expectedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.details">Details</span></dt>
+        <dd>
+          <span>{{ deal.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.transaction">Transaction</span></dt>
+        <dd>
+          <div *ngIf="deal.transaction">
+            <a [routerLink]="['/transaction', deal.transaction?.id, 'view']">{{ deal.transaction?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.deliver">Deliver</span></dt>
+        <dd>
+          <div *ngIf="deal.deliver">
+            <a [routerLink]="['/user-application', deal.deliver?.id, 'view']">{{ deal.deliver?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.owner">Owner</span></dt>
+        <dd>
+          <div *ngIf="deal.owner">
+            <a [routerLink]="['/user-application', deal.owner?.id, 'view']">{{ deal.owner?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.trip">Trip</span></dt>
+        <dd>
+          <div *ngIf="deal.trip">
+            <a [routerLink]="['/trip', deal.trip?.id, 'view']">{{ deal.trip?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.deal.status">Status</span></dt>
+        <dd>
+          <div *ngIf="deal.status">
+            <a [routerLink]="['/deal-status', deal.status?.id, 'view']">{{ deal.status?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/deal', deal.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

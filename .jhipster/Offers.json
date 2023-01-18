@@ -1,0 +1,28 @@
+{
+  "changelogDate": "20220618184346",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "shipmentDealId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "tripDealId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "senderId",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Offers",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

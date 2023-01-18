@@ -1,0 +1,32 @@
+{
+  "laserApp": {
+    "location": {
+      "home": {
+        "title": "Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Location",
+        "createOrEditLabel": "Create or edit a Location",
+        "notFound": "No Locations found"
+      },
+      "created": "A new Location is created with identifier {{ param }}",
+      "updated": "A Location is updated with identifier {{ param }}",
+      "deleted": "A Location is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Location"
+      },
+      "id": "ID",
+      "country": "Country",
+      "city": "City",
+      "airport": "Airport",
+      "createdAt": "Created At",
+      "details": "Details",
+      "tripDestinations": "Trip Destinations",
+      "tripSources": "Trip Sources",
+      "shipmentDestinations": "Shipment Destinations",
+      "shipmentSources": "Shipment Sources"
+    }
+  }
+}

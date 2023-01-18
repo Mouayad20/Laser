@@ -1,0 +1,91 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213528",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "deal",
+  "fields": [
+    {
+      "fieldName": "totalPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "isCashed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fromAccount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "toAccount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fullWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "availableWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "arrivelDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expectedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "Deal",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "deal",
+      "ownerSide": true,
+      "relationshipName": "transaction",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "shipment",
+      "otherEntityRelationshipName": "deal",
+      "relationshipName": "shipments",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "userApplication",
+      "otherEntityRelationshipName": "tripsDeals",
+      "relationshipName": "deliver",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "userApplication",
+      "otherEntityRelationshipName": "shipmentDeals",
+      "relationshipName": "owner",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "trip",
+      "otherEntityRelationshipName": "deals",
+      "relationshipName": "trip",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "dealStatus",
+      "otherEntityRelationshipName": "deals",
+      "relationshipName": "status",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

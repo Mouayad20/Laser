@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userApplication">
+      <h2 data-cy="userApplicationDetailsHeading"><span jhiTranslate="laserApp.userApplication.detail.title">User Application</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userApplication.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.phone">Phone</span></dt>
+        <dd>
+          <span>{{ userApplication.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.passport">Passport</span></dt>
+        <dd>
+          <span>{{ userApplication.passport }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.createdAt">Created At</span></dt>
+        <dd>
+          <span>{{ userApplication.createdAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.isGoogleAccount">Is Google Account</span></dt>
+        <dd>
+          <span>{{ userApplication.isGoogleAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.isFacebookAccount">Is Facebook Account</span></dt>
+        <dd>
+          <span>{{ userApplication.isFacebookAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.isTwitterAccount">Is Twitter Account</span></dt>
+        <dd>
+          <span>{{ userApplication.isTwitterAccount }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.image">Image</span></dt>
+        <dd>
+          <span>{{ userApplication.image }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.rate">Rate</span></dt>
+        <dd>
+          <span>{{ userApplication.rate }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.fiveStar">Five Star</span></dt>
+        <dd>
+          <span>{{ userApplication.fiveStar }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.fourSatr">Four Satr</span></dt>
+        <dd>
+          <span>{{ userApplication.fourSatr }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.threeStar">Three Star</span></dt>
+        <dd>
+          <span>{{ userApplication.threeStar }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.twoStar">Two Star</span></dt>
+        <dd>
+          <span>{{ userApplication.twoStar }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.oneStar">One Star</span></dt>
+        <dd>
+          <span>{{ userApplication.oneStar }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.detalis">Detalis</span></dt>
+        <dd>
+          <span>{{ userApplication.detalis }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.connection">Connection</span></dt>
+        <dd>
+          <div *ngIf="userApplication.connection">
+            <a [routerLink]="['/connection', userApplication.connection?.id, 'view']">{{ userApplication.connection?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.userApplication.user">User</span></dt>
+        <dd>
+          <span>{{ userApplication.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-application', userApplication.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "changelogDate": "20221014174621",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "weightFactor",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "maxWeight",
+      "fieldType": "Double"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Constants",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

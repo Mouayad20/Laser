@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trip">
+      <h2 data-cy="tripDetailsHeading"><span jhiTranslate="laserApp.trip.detail.title">Trip</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trip.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.createdAt">Created At</span></dt>
+        <dd>
+          <span>{{ trip.createdAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.flyTime">Fly Time</span></dt>
+        <dd>
+          <span>{{ trip.flyTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.arriveTime">Arrive Time</span></dt>
+        <dd>
+          <span>{{ trip.arriveTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.tripIdentifier">Trip Identifier</span></dt>
+        <dd>
+          <span>{{ trip.tripIdentifier }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.details">Details</span></dt>
+        <dd>
+          <span>{{ trip.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.ticketImage">Ticket Image</span></dt>
+        <dd>
+          <span>{{ trip.ticketImage }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.tripType">Trip Type</span></dt>
+        <dd>
+          <span>{{ trip.tripType }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.transit">Transit</span></dt>
+        <dd>
+          <span>{{ trip.transit }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.to">To</span></dt>
+        <dd>
+          <div *ngIf="trip.to">
+            <a [routerLink]="['/location', trip.to?.id, 'view']">{{ trip.to?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.trip.from">From</span></dt>
+        <dd>
+          <div *ngIf="trip.from">
+            <a [routerLink]="['/location', trip.from?.id, 'view']">{{ trip.from?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/trip', trip.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

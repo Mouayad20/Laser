@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-connection-heading" data-cy="ConnectionCreateUpdateHeading" jhiTranslate="laserApp.connection.home.createOrEditLabel">
+        Create or edit a Connection
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.connection.fcmToken" for="field_fcmToken">Fcm Token</label>
+          <input type="text" class="form-control" name="fcmToken" id="field_fcmToken" data-cy="fcmToken" formControlName="fcmToken" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.connection.localToken" for="field_localToken">Local Token</label>
+          <input
+            type="text"
+            class="form-control"
+            name="localToken"
+            id="field_localToken"
+            data-cy="localToken"
+            formControlName="localToken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.connection.localRefreshToken" for="field_localRefreshToken"
+            >Local Refresh Token</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="localRefreshToken"
+            id="field_localRefreshToken"
+            data-cy="localRefreshToken"
+            formControlName="localRefreshToken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.connection.oAuthToken" for="field_oAuthToken">O Auth Token</label>
+          <input
+            type="text"
+            class="form-control"
+            name="oAuthToken"
+            id="field_oAuthToken"
+            data-cy="oAuthToken"
+            formControlName="oAuthToken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.connection.localTokenExpiryDate" for="field_localTokenExpiryDate"
+            >Local Token Expiry Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_localTokenExpiryDate"
+              data-cy="localTokenExpiryDate"
+              type="datetime-local"
+              class="form-control"
+              name="localTokenExpiryDate"
+              formControlName="localTokenExpiryDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

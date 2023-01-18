@@ -1,0 +1,26 @@
+{
+  "laserApp": {
+    "dealStatus": {
+      "home": {
+        "title": "Deal Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Deal Status",
+        "createOrEditLabel": "Create or edit a Deal Status",
+        "notFound": "No Deal Statuses found"
+      },
+      "created": "A new Deal Status is created with identifier {{ param }}",
+      "updated": "A Deal Status is updated with identifier {{ param }}",
+      "deleted": "A Deal Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Deal Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Deal Status"
+      },
+      "id": "ID",
+      "name": "Name",
+      "sequence": "Sequence",
+      "deals": "Deals"
+    }
+  }
+}

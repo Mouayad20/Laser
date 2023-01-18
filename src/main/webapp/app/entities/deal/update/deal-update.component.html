@@ -1,0 +1,198 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-deal-heading" data-cy="DealCreateUpdateHeading" jhiTranslate="laserApp.deal.home.createOrEditLabel">
+        Create or edit a Deal
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.totalPrice" for="field_totalPrice">Total Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalPrice"
+            id="field_totalPrice"
+            data-cy="totalPrice"
+            formControlName="totalPrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.isCashed" for="field_isCashed">Is Cashed</label>
+          <input type="checkbox" class="form-check" name="isCashed" id="field_isCashed" data-cy="isCashed" formControlName="isCashed" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.fromAccount" for="field_fromAccount">From Account</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fromAccount"
+            id="field_fromAccount"
+            data-cy="fromAccount"
+            formControlName="fromAccount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.toAccount" for="field_toAccount">To Account</label>
+          <input type="text" class="form-control" name="toAccount" id="field_toAccount" data-cy="toAccount" formControlName="toAccount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.fullWeight" for="field_fullWeight">Full Weight</label>
+          <input
+            type="number"
+            class="form-control"
+            name="fullWeight"
+            id="field_fullWeight"
+            data-cy="fullWeight"
+            formControlName="fullWeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.availableWeight" for="field_availableWeight">Available Weight</label>
+          <input
+            type="number"
+            class="form-control"
+            name="availableWeight"
+            id="field_availableWeight"
+            data-cy="availableWeight"
+            formControlName="availableWeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.arrivelDate" for="field_arrivelDate">Arrivel Date</label>
+          <div class="d-flex">
+            <input
+              id="field_arrivelDate"
+              data-cy="arrivelDate"
+              type="datetime-local"
+              class="form-control"
+              name="arrivelDate"
+              formControlName="arrivelDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.expectedDate" for="field_expectedDate">Expected Date</label>
+          <div class="d-flex">
+            <input
+              id="field_expectedDate"
+              data-cy="expectedDate"
+              type="datetime-local"
+              class="form-control"
+              name="expectedDate"
+              formControlName="expectedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.details" for="field_details">Details</label>
+          <input type="text" class="form-control" name="details" id="field_details" data-cy="details" formControlName="details" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.transaction" for="field_transaction">Transaction</label>
+          <select class="form-control" id="field_transaction" data-cy="transaction" name="transaction" formControlName="transaction">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                transactionOption.id === editForm.get('transaction')!.value?.id ? editForm.get('transaction')!.value : transactionOption
+              "
+              *ngFor="let transactionOption of transactionsCollection; trackBy: trackTransactionById"
+            >
+              {{ transactionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.deliver" for="field_deliver">Deliver</label>
+          <select class="form-control" id="field_deliver" data-cy="deliver" name="deliver" formControlName="deliver">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userApplicationOption.id === editForm.get('deliver')!.value?.id ? editForm.get('deliver')!.value : userApplicationOption
+              "
+              *ngFor="let userApplicationOption of userApplicationsSharedCollection; trackBy: trackUserApplicationById"
+            >
+              {{ userApplicationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.owner" for="field_owner">Owner</label>
+          <select class="form-control" id="field_owner" data-cy="owner" name="owner" formControlName="owner">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userApplicationOption.id === editForm.get('owner')!.value?.id ? editForm.get('owner')!.value : userApplicationOption
+              "
+              *ngFor="let userApplicationOption of userApplicationsSharedCollection; trackBy: trackUserApplicationById"
+            >
+              {{ userApplicationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.trip" for="field_trip">Trip</label>
+          <select class="form-control" id="field_trip" data-cy="trip" name="trip" formControlName="trip">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="tripOption.id === editForm.get('trip')!.value?.id ? editForm.get('trip')!.value : tripOption"
+              *ngFor="let tripOption of tripsSharedCollection; trackBy: trackTripById"
+            >
+              {{ tripOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.deal.status" for="field_status">Status</label>
+          <select class="form-control" id="field_status" data-cy="status" name="status" formControlName="status">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="dealStatusOption.id === editForm.get('status')!.value?.id ? editForm.get('status')!.value : dealStatusOption"
+              *ngFor="let dealStatusOption of dealStatusesSharedCollection; trackBy: trackDealStatusById"
+            >
+              {{ dealStatusOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

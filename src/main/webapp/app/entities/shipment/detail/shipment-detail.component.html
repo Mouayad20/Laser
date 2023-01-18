@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="shipment">
+      <h2 data-cy="shipmentDetailsHeading"><span jhiTranslate="laserApp.shipment.detail.title">Shipment</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ shipment.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.weight">Weight</span></dt>
+        <dd>
+          <span>{{ shipment.weight }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.url">Url</span></dt>
+        <dd>
+          <span>{{ shipment.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.description">Description</span></dt>
+        <dd>
+          <span>{{ shipment.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.createdAt">Created At</span></dt>
+        <dd>
+          <span>{{ shipment.createdAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.imgUrl">Img Url</span></dt>
+        <dd>
+          <span>{{ shipment.imgUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.cost">Cost</span></dt>
+        <dd>
+          <span>{{ shipment.cost }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.price">Price</span></dt>
+        <dd>
+          <span>{{ shipment.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.details">Details</span></dt>
+        <dd>
+          <span>{{ shipment.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.type">Type</span></dt>
+        <dd>
+          <div *ngIf="shipment.type">
+            <a [routerLink]="['/shipment-type', shipment.type?.id, 'view']">{{ shipment.type?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.to">To</span></dt>
+        <dd>
+          <div *ngIf="shipment.to">
+            <a [routerLink]="['/location', shipment.to?.id, 'view']">{{ shipment.to?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.from">From</span></dt>
+        <dd>
+          <div *ngIf="shipment.from">
+            <a [routerLink]="['/location', shipment.from?.id, 'view']">{{ shipment.from?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipment.deal">Deal</span></dt>
+        <dd>
+          <div *ngIf="shipment.deal">
+            <a [routerLink]="['/deal', shipment.deal?.id, 'view']">{{ shipment.deal?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/shipment', shipment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

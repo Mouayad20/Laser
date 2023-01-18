@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Deal.
+    -->
+    <changeSet id="20220507213528-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="transaction_id"
+                                 baseTableName="deal"
+                                 constraintName="fk_deal__transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="deliver_id"
+                                 baseTableName="deal"
+                                 constraintName="fk_deal__deliver_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_application"/>
+
+        <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="deal"
+                                 constraintName="fk_deal__owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_application"/>
+
+        <addForeignKeyConstraint baseColumnNames="trip_id"
+                                 baseTableName="deal"
+                                 constraintName="fk_deal__trip_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="trip"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="deal"
+                                 constraintName="fk_deal__status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="deal_status"/>
+    </changeSet>
+</databaseChangeLog>

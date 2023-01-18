@@ -1,0 +1,25 @@
+{
+  "laserApp": {
+    "constants": {
+      "home": {
+        "title": "Constants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Constants",
+        "createOrEditLabel": "Create or edit a Constants",
+        "notFound": "No Constants found"
+      },
+      "created": "A new Constants is created with identifier {{ param }}",
+      "updated": "A Constants is updated with identifier {{ param }}",
+      "deleted": "A Constants is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Constants {{ id }}?"
+      },
+      "detail": {
+        "title": "Constants"
+      },
+      "id": "ID",
+      "weightFactor": "Weight Factor",
+      "maxWeight": "Max Weight"
+    }
+  }
+}

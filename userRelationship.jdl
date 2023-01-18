@@ -1,0 +1,16 @@
+entity ApplicationUser {
+ phone String
+     passport String
+     createdAt Instant
+     isGoogleAccount Boolean
+     isFacebookAccount Boolean
+     isTwitterAccount Boolean
+     image String
+}
+
+relationship OneToOne {
+  ApplicationUser{internalUser} to User
+}
+dto  ApplicationUser with mapstruct
+paginate ApplicationUser with pagination
+service ApplicationUser with serviceClass

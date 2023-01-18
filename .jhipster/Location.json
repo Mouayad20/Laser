@@ -1,0 +1,61 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213530",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "location",
+  "fields": [
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "airport",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Location",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "trip",
+      "otherEntityRelationshipName": "to",
+      "relationshipName": "tripDestinations",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "trip",
+      "otherEntityRelationshipName": "from",
+      "relationshipName": "tripSources",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "shipment",
+      "otherEntityRelationshipName": "to",
+      "relationshipName": "shipmentDestinations",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "shipment",
+      "otherEntityRelationshipName": "from",
+      "relationshipName": "shipmentSources",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

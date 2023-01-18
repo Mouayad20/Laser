@@ -1,0 +1,35 @@
+{
+  "laserApp": {
+    "shipment": {
+      "home": {
+        "title": "Shipments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Shipment",
+        "createOrEditLabel": "Create or edit a Shipment",
+        "notFound": "No Shipments found"
+      },
+      "created": "A new Shipment is created with identifier {{ param }}",
+      "updated": "A Shipment is updated with identifier {{ param }}",
+      "deleted": "A Shipment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shipment {{ id }}?"
+      },
+      "detail": {
+        "title": "Shipment"
+      },
+      "id": "ID",
+      "weight": "Weight",
+      "url": "Url",
+      "description": "Description",
+      "createdAt": "Created At",
+      "imgUrl": "Img Url",
+      "cost": "Cost",
+      "price": "Price",
+      "details": "Details",
+      "type": "Type",
+      "to": "To",
+      "from": "From",
+      "deal": "Deal"
+    }
+  }
+}

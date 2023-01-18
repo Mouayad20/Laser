@@ -1,0 +1,25 @@
+{
+  "laserApp": {
+    "accountProvider": {
+      "home": {
+        "title": "Account Providers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Account Provider",
+        "createOrEditLabel": "Create or edit a Account Provider",
+        "notFound": "No Account Providers found"
+      },
+      "created": "A new Account Provider is created with identifier {{ param }}",
+      "updated": "A Account Provider is updated with identifier {{ param }}",
+      "deleted": "A Account Provider is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Account Provider {{ id }}?"
+      },
+      "detail": {
+        "title": "Account Provider"
+      },
+      "id": "ID",
+      "name": "Name",
+      "transactions": "Transactions"
+    }
+  }
+}

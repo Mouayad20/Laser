@@ -1,0 +1,41 @@
+{
+  "laserApp": {
+    "userApplication": {
+      "home": {
+        "title": "User Applications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Application",
+        "createOrEditLabel": "Create or edit a User Application",
+        "notFound": "No User Applications found"
+      },
+      "created": "A new User Application is created with identifier {{ param }}",
+      "updated": "A User Application is updated with identifier {{ param }}",
+      "deleted": "A User Application is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Application {{ id }}?"
+      },
+      "detail": {
+        "title": "User Application"
+      },
+      "id": "ID",
+      "phone": "Phone",
+      "passport": "Passport",
+      "createdAt": "Created At",
+      "isGoogleAccount": "Is Google Account",
+      "isFacebookAccount": "Is Facebook Account",
+      "isTwitterAccount": "Is Twitter Account",
+      "image": "Image",
+      "rate": "Rate",
+      "fiveStar": "Five Star",
+      "fourSatr": "Four Satr",
+      "threeStar": "Three Star",
+      "twoStar": "Two Star",
+      "oneStar": "One Star",
+      "detalis": "Detalis",
+      "connection": "Connection",
+      "tripsDeals": "Trips Deals",
+      "shipmentDeals": "Shipment Deals",
+      "user": "User"
+    }
+  }
+}

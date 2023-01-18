@@ -1,0 +1,34 @@
+{
+    "phone": "string",
+    "passport": "string",
+    "createdAt": "2022-09-20 20:54:44",
+    "isGoogleAccount": true,
+    "isFacebookAccount": true,
+    "isTwitterAccount": true,
+    "image": "string",
+    "rate": 0,
+    "fiveStar": 0,
+    "fourSatr": 0,
+    "threeStar": 0,
+    "twoStar": 0,
+    "oneStar": 0,
+    "detalis": "string",
+    "connection": {
+      "fcmToken": "string",
+      "localToken": "string",
+      "localRefreshToken": "string",
+      "getoAuthToken": "string",
+      "localTokenExpiryDate": "2022-09-20 20:54:44"
+    },
+    "user": {
+      "login": "anas_tarazi",
+      "password": "P@ssw0rd",
+      "firstName": "anas",
+      "lastName": "tarazi",
+      "email": "anas.anas1998.tar@gmail.com",
+      "activated": false,
+      "langKey": "en",
+      "imageUrl": "",
+      "resetDate": "2022-09-20 20:54:44"
+    }
+  }

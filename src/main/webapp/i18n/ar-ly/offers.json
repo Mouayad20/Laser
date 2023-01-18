@@ -1,0 +1,27 @@
+{
+  "laserApp": {
+    "offers": {
+      "home": {
+        "title": "Offers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Offers",
+        "createOrEditLabel": "Create or edit a Offers",
+        "notFound": "No Offers found"
+      },
+      "created": "A new Offers is created with identifier {{ param }}",
+      "updated": "A Offers is updated with identifier {{ param }}",
+      "deleted": "A Offers is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Offers {{ id }}?"
+      },
+      "detail": {
+        "title": "Offers"
+      },
+      "id": "ID",
+      "shipmentDealId": "Shipment Deal Id",
+      "tripDealId": "Trip Deal Id",
+      "status": "Status",
+      "senderId": "Sender Id"
+    }
+  }
+}

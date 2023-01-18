@@ -1,0 +1,173 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-application-heading"
+        data-cy="UserApplicationCreateUpdateHeading"
+        jhiTranslate="laserApp.userApplication.home.createOrEditLabel"
+      >
+        Create or edit a User Application
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.phone" for="field_phone">Phone</label>
+          <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.passport" for="field_passport">Passport</label>
+          <input type="text" class="form-control" name="passport" id="field_passport" data-cy="passport" formControlName="passport" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.createdAt" for="field_createdAt">Created At</label>
+          <div class="d-flex">
+            <input
+              id="field_createdAt"
+              data-cy="createdAt"
+              type="datetime-local"
+              class="form-control"
+              name="createdAt"
+              formControlName="createdAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.isGoogleAccount" for="field_isGoogleAccount"
+            >Is Google Account</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isGoogleAccount"
+            id="field_isGoogleAccount"
+            data-cy="isGoogleAccount"
+            formControlName="isGoogleAccount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.isFacebookAccount" for="field_isFacebookAccount"
+            >Is Facebook Account</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isFacebookAccount"
+            id="field_isFacebookAccount"
+            data-cy="isFacebookAccount"
+            formControlName="isFacebookAccount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.isTwitterAccount" for="field_isTwitterAccount"
+            >Is Twitter Account</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isTwitterAccount"
+            id="field_isTwitterAccount"
+            data-cy="isTwitterAccount"
+            formControlName="isTwitterAccount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.image" for="field_image">Image</label>
+          <input type="text" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.rate" for="field_rate">Rate</label>
+          <input type="number" class="form-control" name="rate" id="field_rate" data-cy="rate" formControlName="rate" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.fiveStar" for="field_fiveStar">Five Star</label>
+          <input type="number" class="form-control" name="fiveStar" id="field_fiveStar" data-cy="fiveStar" formControlName="fiveStar" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.fourSatr" for="field_fourSatr">Four Satr</label>
+          <input type="number" class="form-control" name="fourSatr" id="field_fourSatr" data-cy="fourSatr" formControlName="fourSatr" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.threeStar" for="field_threeStar">Three Star</label>
+          <input type="number" class="form-control" name="threeStar" id="field_threeStar" data-cy="threeStar" formControlName="threeStar" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.twoStar" for="field_twoStar">Two Star</label>
+          <input type="number" class="form-control" name="twoStar" id="field_twoStar" data-cy="twoStar" formControlName="twoStar" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.oneStar" for="field_oneStar">One Star</label>
+          <input type="number" class="form-control" name="oneStar" id="field_oneStar" data-cy="oneStar" formControlName="oneStar" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.detalis" for="field_detalis">Detalis</label>
+          <input type="text" class="form-control" name="detalis" id="field_detalis" data-cy="detalis" formControlName="detalis" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.connection" for="field_connection">Connection</label>
+          <select class="form-control" id="field_connection" data-cy="connection" name="connection" formControlName="connection">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                connectionOption.id === editForm.get('connection')!.value?.id ? editForm.get('connection')!.value : connectionOption
+              "
+              *ngFor="let connectionOption of connectionsCollection; trackBy: trackConnectionById"
+            >
+              {{ connectionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.userApplication.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

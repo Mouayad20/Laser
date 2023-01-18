@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="offers">
+      <h2 data-cy="offersDetailsHeading"><span jhiTranslate="laserApp.offers.detail.title">Offers</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ offers.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.offers.shipmentDealId">Shipment Deal Id</span></dt>
+        <dd>
+          <span>{{ offers.shipmentDealId }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.offers.tripDealId">Trip Deal Id</span></dt>
+        <dd>
+          <span>{{ offers.tripDealId }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.offers.status">Status</span></dt>
+        <dd>
+          <span>{{ offers.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.offers.senderId">Sender Id</span></dt>
+        <dd>
+          <span>{{ offers.senderId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/offers', offers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213531",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "shipment",
+  "fields": [
+    {
+      "fieldName": "weight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "imgUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Task entity.\\n@author The JHipster team.",
+  "jpaMetamodelFiltering": false,
+  "name": "Shipment",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "shipmentType",
+      "otherEntityRelationshipName": "shipments",
+      "relationshipName": "type",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "shipmentDestinations",
+      "relationshipName": "to",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "shipmentSources",
+      "relationshipName": "from",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "shipments",
+      "relationshipName": "deal",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

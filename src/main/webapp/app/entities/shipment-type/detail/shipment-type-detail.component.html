@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="shipmentType">
+      <h2 data-cy="shipmentTypeDetailsHeading"><span jhiTranslate="laserApp.shipmentType.detail.title">Shipment Type</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ shipmentType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipmentType.name">Name</span></dt>
+        <dd>
+          <span>{{ shipmentType.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.shipmentType.factor">Factor</span></dt>
+        <dd>
+          <span>{{ shipmentType.factor }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/shipment-type', shipmentType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

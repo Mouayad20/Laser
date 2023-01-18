@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213535",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "shipment_type",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "factor",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ShipmentType",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "shipment",
+      "otherEntityRelationshipName": "type",
+      "relationshipName": "shipments",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

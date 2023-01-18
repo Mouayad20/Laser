@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="countries">
+      <h2 data-cy="countriesDetailsHeading"><span jhiTranslate="laserApp.countries.detail.title">Countries</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ countries.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.countries.country">Country</span></dt>
+        <dd>
+          <span>{{ countries.country }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.countries.capital">Capital</span></dt>
+        <dd>
+          <span>{{ countries.capital }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.countries.code">Code</span></dt>
+        <dd>
+          <span>{{ countries.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="laserApp.countries.phoneCode">Phone Code</span></dt>
+        <dd>
+          <span>{{ countries.phoneCode }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/countries', countries.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

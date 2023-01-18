@@ -1,0 +1,98 @@
+
+entity Article {
+    title String
+  content String
+  viewcount Integer
+  imageUrl String
+  createdAt Instant
+}
+entity UserApplication {
+    phone String
+     passport String
+     createdAt Instant
+     isGoogleAccount Boolean
+     isFacebookAccount Boolean
+     isTwitterAccount Boolean
+     image String
+}
+// an ignored comment
+/** not an ignored comment */
+entity Deal {
+    totalPrice Double
+ isCashed Boolean
+ fromAccount String
+ toAccount String
+}
+entity Transaction {
+    fromAccount String
+toAccount String
+fees Double
+netAmount Double
+}
+entity Location {
+    country String
+  city String
+  airport String
+  createdAt Instant
+}
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Shipment {
+    weight Double
+     url String
+     description String
+     createdAt Instant
+     imgUrl String
+     cost Double
+     price Double
+}
+/**
+ * The Employee entity.
+ */
+entity Connection {
+    fcmToken String
+      localToken String
+      localRefreshToken String
+      oAuthToken String
+      localTokenExpiryDate Instant
+}
+entity Trip {
+    createdAt Instant
+ flyTime Instant
+ arriveTime Instant
+ fullWeight Double
+ availableWeight Double
+ tripIdentifier String
+}
+entity AccountProvider {
+    name String
+}
+entity ShipmentType {
+    name String
+}
+entity DealStatus {
+    name String
+}
+relationship OneToOne {
+    UserApplication{connection} to Connection{userApplication}
+    Deal{transaction} to Transaction{deal}
+   
+
+}
+relationship OneToMany {
+  UserApplication{tripsDeals} to Deal{deliver}
+  UserApplication{shipmentDeals} to Deal{owner}
+  Trip{deals} to Deal{trip}
+  ShipmentType{shipments} to Shipment{type}
+  Location{tripDestinations} to Trip{to}
+  Location{tripSources} to Trip{from}
+  Location{shipmentDestinations} to Shipment{to}
+  Location{shipmentSources} to Shipment{from}
+  DealStatus{deals} to Deal{status}
+  Deal{shipments} to Shipment{deal}
+  AccountProvider{transactions} to Transaction{provider}
+}
+paginate * with pagination
+service * with serviceClass

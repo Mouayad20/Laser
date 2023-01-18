@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Deal.
+    -->
+    <changeSet id="20220507213528-1" author="jhipster">
+        <createTable tableName="deal" remarks="not an ignored comment">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="total_price" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_cashed" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="from_account" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="to_account" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="full_weight" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="available_weight" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="arrivel_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="expected_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="details" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="transaction_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_deal__transaction_id" />
+            </column>
+            <column name="deliver_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="trip_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="status_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="deal" columnName="arrivel_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="deal" columnName="expected_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220507213528-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/deal.csv"
+                  separator=";"
+                  tableName="deal"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="total_price" type="numeric"/>
+            <column name="is_cashed" type="boolean"/>
+            <column name="from_account" type="string"/>
+            <column name="to_account" type="string"/>
+            <column name="full_weight" type="numeric"/>
+            <column name="available_weight" type="numeric"/>
+            <column name="arrivel_date" type="date"/>
+            <column name="expected_date" type="date"/>
+            <column name="details" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

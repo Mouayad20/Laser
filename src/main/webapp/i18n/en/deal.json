@@ -1,0 +1,38 @@
+{
+  "laserApp": {
+    "deal": {
+      "home": {
+        "title": "Deals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Deal",
+        "createOrEditLabel": "Create or edit a Deal",
+        "notFound": "No Deals found"
+      },
+      "created": "A new Deal is created with identifier {{ param }}",
+      "updated": "A Deal is updated with identifier {{ param }}",
+      "deleted": "A Deal is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Deal {{ id }}?"
+      },
+      "detail": {
+        "title": "Deal"
+      },
+      "id": "ID",
+      "totalPrice": "Total Price",
+      "isCashed": "Is Cashed",
+      "fromAccount": "From Account",
+      "toAccount": "To Account",
+      "fullWeight": "Full Weight",
+      "availableWeight": "Available Weight",
+      "arrivelDate": "Arrivel Date",
+      "expectedDate": "Expected Date",
+      "details": "Details",
+      "transaction": "Transaction",
+      "shipments": "Shipments",
+      "deliver": "Deliver",
+      "owner": "Owner",
+      "trip": "Trip",
+      "status": "Status"
+    }
+  }
+}

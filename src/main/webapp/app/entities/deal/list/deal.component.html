@@ -1,0 +1,152 @@
+<div>
+  <h2 id="page-heading" data-cy="DealHeading">
+    <span jhiTranslate="laserApp.deal.home.title">Deals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="laserApp.deal.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-deal"
+        [routerLink]="['/deal/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="laserApp.deal.home.createLabel"> Create a new Deal </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="deals?.length === 0">
+    <span jhiTranslate="laserApp.deal.home.notFound">No deals found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="deals && deals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="totalPrice">
+            <span jhiTranslate="laserApp.deal.totalPrice">Total Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isCashed">
+            <span jhiTranslate="laserApp.deal.isCashed">Is Cashed</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fromAccount">
+            <span jhiTranslate="laserApp.deal.fromAccount">From Account</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="toAccount">
+            <span jhiTranslate="laserApp.deal.toAccount">To Account</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fullWeight">
+            <span jhiTranslate="laserApp.deal.fullWeight">Full Weight</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="availableWeight">
+            <span jhiTranslate="laserApp.deal.availableWeight">Available Weight</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="arrivelDate">
+            <span jhiTranslate="laserApp.deal.arrivelDate">Arrivel Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="expectedDate">
+            <span jhiTranslate="laserApp.deal.expectedDate">Expected Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="details"><span jhiTranslate="laserApp.deal.details">Details</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="transaction.id">
+            <span jhiTranslate="laserApp.deal.transaction">Transaction</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="deliver.id">
+            <span jhiTranslate="laserApp.deal.deliver">Deliver</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="owner.id"><span jhiTranslate="laserApp.deal.owner">Owner</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="trip.id"><span jhiTranslate="laserApp.deal.trip">Trip</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="status.id"><span jhiTranslate="laserApp.deal.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deal of deals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/deal', deal.id, 'view']">{{ deal.id }}</a>
+          </td>
+          <td>{{ deal.totalPrice }}</td>
+          <td>{{ deal.isCashed }}</td>
+          <td>{{ deal.fromAccount }}</td>
+          <td>{{ deal.toAccount }}</td>
+          <td>{{ deal.fullWeight }}</td>
+          <td>{{ deal.availableWeight }}</td>
+          <td>{{ deal.arrivelDate | formatMediumDatetime }}</td>
+          <td>{{ deal.expectedDate | formatMediumDatetime }}</td>
+          <td>{{ deal.details }}</td>
+          <td>
+            <div *ngIf="deal.transaction">
+              <a [routerLink]="['/transaction', deal.transaction?.id, 'view']">{{ deal.transaction?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="deal.deliver">
+              <a [routerLink]="['/user-application', deal.deliver?.id, 'view']">{{ deal.deliver?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="deal.owner">
+              <a [routerLink]="['/user-application', deal.owner?.id, 'view']">{{ deal.owner?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="deal.trip">
+              <a [routerLink]="['/trip', deal.trip?.id, 'view']">{{ deal.trip?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="deal.status">
+              <a [routerLink]="['/deal-status', deal.status?.id, 'view']">{{ deal.status?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/deal', deal.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/deal', deal.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(deal)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="deals && deals.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213534",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "account_provider",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AccountProvider",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "provider",
+      "relationshipName": "transactions",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

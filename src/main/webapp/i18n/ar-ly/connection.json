@@ -1,0 +1,29 @@
+{
+  "laserApp": {
+    "connection": {
+      "home": {
+        "title": "Connections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Connection",
+        "createOrEditLabel": "Create or edit a Connection",
+        "notFound": "No Connections found"
+      },
+      "created": "A new Connection is created with identifier {{ param }}",
+      "updated": "A Connection is updated with identifier {{ param }}",
+      "deleted": "A Connection is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Connection {{ id }}?"
+      },
+      "detail": {
+        "title": "Connection"
+      },
+      "id": "ID",
+      "fcmToken": "Fcm Token",
+      "localToken": "Local Token",
+      "localRefreshToken": "Local Refresh Token",
+      "oAuthToken": "O Auth Token",
+      "localTokenExpiryDate": "Local Token Expiry Date",
+      "userApplication": "User Application"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213532",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "connection",
+  "fields": [
+    {
+      "fieldName": "fcmToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localRefreshToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "oAuthToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localTokenExpiryDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Employee entity.",
+  "jpaMetamodelFiltering": false,
+  "name": "Connection",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "userApplication",
+      "otherEntityRelationshipName": "connection",
+      "ownerSide": false,
+      "relationshipName": "userApplication",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

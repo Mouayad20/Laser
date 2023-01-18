@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20220507213529",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "transaction",
+  "fields": [
+    {
+      "fieldName": "fromAccount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "toAccount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fees",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "netAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Transaction",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deal",
+      "otherEntityRelationshipName": "transaction",
+      "ownerSide": false,
+      "relationshipName": "deal",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "accountProvider",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "provider",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

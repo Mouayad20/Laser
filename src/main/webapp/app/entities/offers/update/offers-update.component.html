@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-offers-heading" data-cy="OffersCreateUpdateHeading" jhiTranslate="laserApp.offers.home.createOrEditLabel">
+        Create or edit a Offers
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.offers.shipmentDealId" for="field_shipmentDealId">Shipment Deal Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="shipmentDealId"
+            id="field_shipmentDealId"
+            data-cy="shipmentDealId"
+            formControlName="shipmentDealId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.offers.tripDealId" for="field_tripDealId">Trip Deal Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="tripDealId"
+            id="field_tripDealId"
+            data-cy="tripDealId"
+            formControlName="tripDealId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.offers.status" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="laserApp.offers.senderId" for="field_senderId">Sender Id</label>
+          <input type="number" class="form-control" name="senderId" id="field_senderId" data-cy="senderId" formControlName="senderId" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
